@@ -6,7 +6,7 @@ class MovieDetails {
     final List<Genre> genres;
     final String homepage;
     final int id;
-    final String imdbId;
+    final String? imdbId;
     final List<String> originCountry;
     final String originalLanguage;
     final String originalTitle;
@@ -63,7 +63,7 @@ class MovieDetails {
         genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
         homepage: json["homepage"],
         id: json["id"],
-        imdbId: json["imdb_id"],
+        imdbId: json["imdb_id"] ?? '',
         originCountry: List<String>.from(json["origin_country"].map((x) => x)),
         originalLanguage: json["original_language"],
         originalTitle: json["original_title"],
@@ -130,8 +130,8 @@ class BelongsToCollection {
     factory BelongsToCollection.fromJson(Map<String, dynamic> json) => BelongsToCollection(
         id: json["id"],
         name: json["name"],
-        posterPath: json["poster_path"],
-        backdropPath: json["backdrop_path"],
+        posterPath: json["poster_path"] ?? '',
+        backdropPath: json["backdrop_path"] ?? '',
     );
 
     Map<String, dynamic> toJson() => {
